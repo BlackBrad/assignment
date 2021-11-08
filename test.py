@@ -19,6 +19,8 @@ def test_data():
         TODO: DO I NEED SOMETHING HERE?
     '''
     expected_name = "Carbon credits"
+    expected_name_promtions = "Gallery"
+    expected_description = "Good position in category"
     data = get_api_information()
 
     if data is None:
@@ -27,5 +29,10 @@ def test_data():
 
     assert data['Name'] == expected_name
     assert data['CanRelist'] == True
+
+    for entry in data['Promotions']:
+        if (entry['Name'] == expected_name_promtions and
+                expected_description in entry['Description']):
+            assert True
 
     print(data)
