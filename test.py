@@ -25,8 +25,7 @@ def test_data():
         # TODO: probably need to do something better than this!
         assert False
 
-    breakpoint()
-
     assert data['Name'] == expected_name
+    assert data['CanRelist'] == True
 
     print(data)
