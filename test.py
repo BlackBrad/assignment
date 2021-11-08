@@ -1,38 +1,39 @@
 import requests
 
-API = 'https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false'
 
-def get_api_information():
+def get_api_information(api):
     '''
         TODO: DO I NEED SOMETHING HERE?
     '''
     expected_response_code = "200"
-    response_code = requests.get(API)
+    response_code = requests.get(api)
 
     if expected_response_code in str(response_code):
         return response_code.json()
 
     return None
 
+
 def test_data():
     '''
         TODO: DO I NEED SOMETHING HERE?
     '''
+
+    api = ('https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?'
+           'catalogue=false')
     expected_name = "Carbon credits"
     expected_name_promtions = "Gallery"
     expected_description = "Good position in category"
-    data = get_api_information()
+    data = get_api_information(api)
 
     if data is None:
         # TODO: probably need to do something better than this!
         assert False
 
     assert data['Name'] == expected_name
-    assert data['CanRelist'] == True
+    assert data['CanRelist'] is True
 
     for entry in data['Promotions']:
         if (entry['Name'] == expected_name_promtions and
                 expected_description in entry['Description']):
             assert True
-
-    print(data)
