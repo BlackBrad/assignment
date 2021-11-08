@@ -18,11 +18,15 @@ def test_data():
     '''
         TODO: DO I NEED SOMETHING HERE?
     '''
-    breakpoint()
+    expected_name = "Carbon credits"
     data = get_api_information()
 
     if data is None:
         # TODO: probably need to do something better than this!
-        return
-    
+        assert False
+
+    breakpoint()
+
+    assert data['Name'] == expected_name
+
     print(data)
