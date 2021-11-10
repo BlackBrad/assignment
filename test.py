@@ -16,7 +16,8 @@ def get_api_information(api):
             api (str): URL for the api to get data from
 
         Returns:
-            dict | None: Empty if the request fails. Returns None otherwise
+            dict | None: Returns a dict of data from the api if the request was
+                         successfull. Returns None otherwise.
     '''
     log.info(f"Request data from {api}")
     expected_response_code = "200"
