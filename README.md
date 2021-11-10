@@ -60,8 +60,8 @@ To get back onto the environment later on you can use the `workon` command
 
 # How to run the test
 
-I used the pytest testing framework to write the test. As such running the
-test is as simple as passing the file into pytest in a terminal.
+I used the pytest testing framework to write the test. As such, running the
+test is as simple as passing the file into pytest.
 
 `pytest test.py`
 
