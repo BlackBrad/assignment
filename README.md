@@ -35,10 +35,9 @@ virtualenvwrapper.sh file
 `source /usr/share/virtualenvwrapper/virtualenvwrapper.sh`
 
 This will give you access to the virtualenvwrapper commands needed to create a
-virtual environment and to exit the environment.
-
-You may want to add this command to your .bashrc (or .zshrc) to ensure that you
-always have access to these commands.
+virtual environment and to exit the environment. You may want to add this
+command to your .bashrc (or .zshrc) to ensure that you always have access to
+these commands.
 
 Now create your environment and install the required Python packages
 
