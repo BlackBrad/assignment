@@ -67,7 +67,7 @@ test is as simple as passing the file into pytest in a terminal.
 
 This test has been written to be pep8 complient. It meets the pep8 guidelines
 and has been verified using the flake8 tool, which is installed as part of
-requirements.txt. If you want to check this you can run the `flake8` command,
+`requirements.txt`. If you want to check this you can run the `flake8` command,
 passing in the file
 
 `flake8 test.py`
@@ -79,7 +79,7 @@ If everything is okay then flake8 will produce no output.
 The logs are not only written to the console but a file as well. After running
 the tests there should be a `log.txt` file in the directory. If you open it
 then you'll see all the logs are output to there as well. This is the reason
-that everytest starts with `log.info(Staring TEST_NAME)`, this is so we can
+that every test starts with `log.info(Staring TEST_NAME)`, this is so we can
 differentiate the logs for each test in `log.txt`.
 
 If you wanted to change the output file then all you'd need to do is change the
