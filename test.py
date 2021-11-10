@@ -91,6 +91,12 @@ def test_promotions():
         category'. This is done by iterating through the Promotions key in
         the api and verifying that the criteria stated above is met, if so the
         test passes.
+
+        Args:
+            None
+
+        Returns:
+            None
     '''
     log.info("Starting test_promotions")
     expected_name = "Gallery"
