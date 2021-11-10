@@ -17,7 +17,7 @@ def get_api_information(api):
 
         Returns:
             dict | None: Returns a dict of data from the api if the request was
-                         successfull. Returns None otherwise.
+                         successful. Returns None otherwise.
     '''
     log.info(f"Request data from {api}")
     expected_response_code = "200"
