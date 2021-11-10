@@ -7,10 +7,15 @@ know how to setup the enviroment on Windows based machines.
 
 # Setup
 
-To setup the test you need to have Python3.9 installed. On Ubuntu 20.04 this is
-as easy as:
+## Python3.9
+To setup the test you need to have Python3.9 installed.
+
+### Ubuntu 20.04
+On Ubuntu 20.04, installing Python3.9 is as easy as:
 
 `sudo apt install python3.9`
+
+### Ubuntu 18.04
 
 On Ubuntu 18.04 you will need to install the deadsnakes PPA first.
 
@@ -21,6 +26,8 @@ On Ubuntu 18.04 you will need to install the deadsnakes PPA first.
 `sudo apt update`
 
 `sudo apt install python3.9 python3.9-distutils`
+
+## Virtual Environment
 
 You will also need to setup a python virtual environment. Install virtualenv
 and virtualenvwrapper
