@@ -1,8 +1,9 @@
 # assignment
-Assurity assignment
 
-# Assurity Assignment
-Assignment given to me by Assurity consulting
+# Disclaimer
+I do not have a machine running Windows. Therefore all the instructions below
+are only valid for machines running Ubuntu 20.04 or Ubuntu 18.04. I do not
+know how to setup the enviroment on Windows based machines.
 
 # Setup
 
@@ -28,8 +29,8 @@ and virtualenvwrapper
 
 `sudo apt install virtualenvwrapper`
 
-After installing these packages you will need to source the virtualenvwrapper.sh
-file
+After installing these packages you will need to source the
+virtualenvwrapper.sh file
 
 `source /usr/share/virtualenvwrapper/virtualenvwrapper.sh`
 
@@ -61,3 +62,23 @@ I used the pytest testing framework to write the test. As such running the
 test is as simple as passing the file into pytest in a terminal.
 
 `pytest test.py`
+
+# Other Information
+## PEP8
+
+This test has been written to be pep8 complient. It meets the pep8 guidelines
+and has been verified using the flake8 tool, which is installed as part of
+requirements.txt. If you want to check this you can run the `flake8` command,
+passing in the file
+
+`flake8 test.py`
+
+If everything is okay then flake8 will produce no output.
+
+## Logging to a file
+
+The logs are not only written to the console but a file as well. After running
+the tests there should be a `log.txt` file in the directory. If you open it
+then you'll see all the logs are output to there as well. This is the reason
+that everytest starts with `log.info(Staring TEST_NAME)`, this is so we can
+differentiate the logs for each test in `log.txt`
