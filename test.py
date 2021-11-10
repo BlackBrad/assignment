@@ -2,8 +2,16 @@ import requests
 
 
 def get_api_information(api):
-    '''
-        TODO: DO I NEED SOMETHING HERE?
+    ''' Using the requests library, gets the information from the given
+        api and returns the data formatted as JSON. If the request to get
+        the api fails then None is returned instead.
+
+        Args:
+            api (str): URL for the api to get data from
+
+        Returns:
+            dict: Empty if the request fails. Returns a dictionary full of
+                  data from the api otherwise
     '''
     expected_response_code = "200"
     response_code = requests.get(api)
@@ -11,7 +19,7 @@ def get_api_information(api):
     if expected_response_code in str(response_code):
         return response_code.json()
 
-    return None
+    return {}
 
 
 def test_data():
@@ -26,7 +34,7 @@ def test_data():
     expected_description = "Good position in category"
     data = get_api_information(api)
 
-    if data is None:
+    if len(data) < 1:
         # TODO: probably need to do something better than this!
         assert False
 
