@@ -81,4 +81,9 @@ The logs are not only written to the console but a file as well. After running
 the tests there should be a `log.txt` file in the directory. If you open it
 then you'll see all the logs are output to there as well. This is the reason
 that everytest starts with `log.info(Staring TEST_NAME)`, this is so we can
-differentiate the logs for each test in `log.txt`
+differentiate the logs for each test in `log.txt`.
+
+If you wanted to change the output file then all you'd need to do is change the
+`log_file` parameter in pytest.ini to whatever you wanted.
+
+`log_file = some_file_name.txt`
