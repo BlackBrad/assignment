@@ -14,6 +14,8 @@ as easy as:
 
 On Ubuntu 18.04 you will need to install the deadsnakes PPA first.
 
+`sudo apt install software-properties-common`
+
 `sudo add-apt-repository ppa:deadsnakes/ppa`
 
 `sudo apt update`
