@@ -1,5 +1,7 @@
 import requests
+import logging
 
+log = logging.getLogger(__name__)
 
 API = ('https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?'
        'catalogue=false')
@@ -18,7 +20,15 @@ def get_api_information(api):
                   data from the api otherwise
     '''
     expected_response_code = "200"
-    response_code = requests.get(api)
+
+    try:
+        response_code = requests.get(api)
+    except requests.exceptions.ConnectionError:
+        log.error(f"Unable to connect to given URL: {api}")
+        raise
+    except requests.exceptions.MissingSchema:
+        log.error(f"The given URL {api} is invalid")
+        pass
 
     if expected_response_code in str(response_code):
         return response_code.json()
@@ -27,6 +37,15 @@ def get_api_information(api):
 
 
 def test_name():
+    ''' Tests that a given api with the key-value pair with the key 'Name'
+        contains the value 'Carbon Credits'.
+
+        Args:
+            None
+
+        Returns:
+            None
+    '''
     expected_name = "Carbon credits"
 
     data = get_api_information(API)
@@ -37,6 +56,8 @@ def test_name():
 
 
 def test_can_relist():
+    '''
+    '''
     expected_can_relist = True
 
     data = get_api_information(API)
@@ -47,6 +68,8 @@ def test_can_relist():
 
 
 def test_promotions():
+    '''
+    '''
     expected_name_promotions = "Gallery"
     expected_description = "Good position in category"
 
