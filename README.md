@@ -18,16 +18,12 @@ On Ubuntu 18.04 you will need to install the deadsnakes PPA first.
 
 `sudo apt update`
 
-`sudo apt install python3.9`
-
-`sudo apt install python3.9-distutils`
+`sudo apt install python3.9 python3.9-distutils`
 
 You will also need to setup a python virtual environment. Install virtualenv
 and virtualenvwrapper
 
-`sudo apt install virtualenv`
-
-`sudo apt install virtualenvwrapper`
+`sudo apt install virtualenv virtualenvwrapper`
 
 After installing these packages you will need to source the
 virtualenvwrapper.sh file
