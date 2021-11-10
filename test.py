@@ -16,9 +16,9 @@ def get_api_information(api):
             api (str): URL for the api to get data from
 
         Returns:
-            dict: Empty if the request fails. Returns a dictionary full of
-                  data from the api otherwise
+            dict | None: Empty if the request fails. Returns None otherwise
     '''
+    log.info(f"Request data from {api}")
     expected_response_code = "200"
 
     try:
@@ -28,11 +28,15 @@ def get_api_information(api):
         raise
     except requests.exceptions.MissingSchema:
         log.error(f"The given URL {api} is invalid")
-        pass
+        raise
 
     if expected_response_code in str(response_code):
+        log.info(f"Succesfully requested data from {api}")
         return response_code.json()
 
+    log.error("Unable to succesfully request data from {api}")
+    log.error(f"Expected response code containg {expected_response_code} but "
+              f"got {response_code}")
     return None
 
 
@@ -46,6 +50,7 @@ def test_name():
         Returns:
             None
     '''
+    log.info("Starting test_name")
     expected_name = "Carbon credits"
 
     data = get_api_information(API)
@@ -56,8 +61,16 @@ def test_name():
 
 
 def test_can_relist():
+    ''' Tests that a given api with a key-value pair, with the key 'CanRelist'
+        has a value set to True
+
+        Args:
+            None
+
+        Returns:
+            None
     '''
-    '''
+    log.info("Starting test_can_relist")
     expected_can_relist = True
 
     data = get_api_information(API)
@@ -68,9 +81,16 @@ def test_can_relist():
 
 
 def test_promotions():
+    ''' Tests that a given api with a key-value pair, with the key 'Promotions'
+        contains a list of more key-value pairs. One of those key-value pairs
+        must contain the key 'Name' with the value 'Gallery'. It must also
+        contain they key 'Description' with a value containg 'Good position in
+        category'. This is done by iterating through the Promotions key in
+        the api and verifying that the criteria stated above is met, if so the
+        test passes.
     '''
-    '''
-    expected_name_promotions = "Gallery"
+    log.info("Starting test_promotions")
+    expected_name = "Gallery"
     expected_description = "Good position in category"
 
     data = get_api_information(API)
@@ -78,9 +98,16 @@ def test_promotions():
     assert data is not None, f"Error fetching data from {API}"
 
     for entry in data['Promotions']:
-        if (entry['Name'] == expected_name_promotions and
+        if (entry['Name'] == expected_name and
                 expected_description in entry['Description']):
+            log.info(f"Expected name: '{expected_name}' and "
+                     f"expected_description: '{expected_description}' found "
+                     "in Promotions list")
             assert True
             break
     else:
+        # If the for loop does not break then expected_name and
+        # expected_description were not found. In this case we want to fail
+        log.info(f"Unable to find Name: '{expected_name}' and Description: "
+                 f"'{expected_description}' in Promotions list")
         assert False
