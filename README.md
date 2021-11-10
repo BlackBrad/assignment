@@ -1,5 +1,3 @@
-# assignment
-
 # Disclaimer
 I do not have a machine running Windows. Therefore all the instructions below
 are only valid for machines running Ubuntu 20.04 or Ubuntu 18.04. I do not
