@@ -1,4 +1,5 @@
 import requests
+
 import logging
 
 log = logging.getLogger(__name__)
@@ -57,7 +58,8 @@ def test_name():
 
     assert data is not None, f"Error fetching data from {API}"
 
-    assert data['Name'] == expected_name
+    assert data['Name'] == expected_name, (f"Expected '{expected_name}', got "
+                                           f"'{data['Name']}'")
 
 
 def test_can_relist():
@@ -77,7 +79,8 @@ def test_can_relist():
 
     assert data is not None, f"Error fetching data from {API}"
 
-    assert data['CanRelist'] is expected_can_relist
+    assert data['CanRelist'] is expected_can_relist, (
+            f"Expected '{expected_can_relist}', got {data['CanRelist']}")
 
 
 def test_promotions():
@@ -97,6 +100,7 @@ def test_promotions():
 
     assert data is not None, f"Error fetching data from {API}"
 
+    log.info("Iterate through the Promotions list")
     for entry in data['Promotions']:
         if (entry['Name'] == expected_name and
                 expected_description in entry['Description']):
